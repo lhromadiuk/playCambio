@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>playCambio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="lobby.css">
+    <script src="https://cdn.jsdelivr.net/npm/colyseus.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div id="notificationBar" class="notification-bar" style="display: none;">
+        </div>
+        <h1 id="gameTitle">Cambio - The Card Game</h1>
+        <input type="text" id="username" placeholder="Enter your username" autocomplete="off">
+        <button id="startNewGame">Start New Game</button>
+        <p>Have a game code?</p>
+        <input type="text" id="gameCode" placeholder="Enter game code" autocomplete="off">
+        <button id="joinGame">Join Game</button>
+        <button id="viewRules">View Rules</button>
+    </div>
+
+    <script src="client.js"></script>
+</body>
+
+</html>
