@@ -17,6 +17,7 @@ startNewGameButton.addEventListener('click', async () => {
         const room = await client.create('cambio_room', { username:username });
        // const idkw  =await client.join("cambio_room", { username: username }).then(room => {})
         console.log('Joined new game:', room);
+        window.open('room.html', '_blank')
 
     } catch (error) {
         console.error('Failed to create room:', error);
