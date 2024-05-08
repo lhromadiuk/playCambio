@@ -24,6 +24,11 @@ export default config({
          * Read more: https://expressjs.com/en/starter/basic-routing.html
          */
         app.use(cors());
+        app.use((req, res, next) => {
+            res.header("Access-Control-Allow-Origin", "*"); // Replace "*" with specific domains as needed
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+          });
         app.use(express.static('client'));
         app.get('/', (req, res) => {
             res.sendFile('lobby.html', { root: 'client' });

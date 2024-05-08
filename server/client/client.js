@@ -1,5 +1,5 @@
 
-const client = new Colyseus.Client('ws://localhost:2567');
+const client = new Colyseus.Client('ws://playcambio.de');
 const usernameInput = document.getElementById('username');
 const gameCodeInput = document.getElementById('gameCode');
 const startNewGameButton = document.getElementById('startNewGame');
