@@ -1,51 +1,48 @@
-import config from "@colyseus/tools";
-import { monitor } from "@colyseus/monitor";
-import { playground } from "@colyseus/playground";
-import express from 'express';
-import cors from 'cors'
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const tools_1 = __importDefault(require("@colyseus/tools"));
+const monitor_1 = require("@colyseus/monitor");
+const playground_1 = require("@colyseus/playground");
+const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 /**
  * Import your Room files
  */
-import { CambioRoom } from "./rooms/CambioRoom";
-
-export default config({
-
+const CambioRoom_1 = require("./rooms/CambioRoom");
+exports.default = (0, tools_1.default)({
     initializeGameServer: (gameServer) => {
         /**
          * Define your room handlers:
          */
-        gameServer.define('cambio_room', CambioRoom);
-
+        gameServer.define('cambio_room', CambioRoom_1.CambioRoom);
     },
-
     initializeExpress: (app) => {
         /**
          * Bind your custom express routes here:
          * Read more: https://expressjs.com/en/starter/basic-routing.html
          */
-        app.use(cors());
-        app.use(express.static('client'));
+        app.use((0, cors_1.default)());
+        app.use(express_1.default.static('client'));
         app.get('/', (req, res) => {
             res.sendFile('lobby.html', { root: 'client' });
         });
-
         /**
          * Use @colyseus/playground
          * (It is not recommended to expose this route in a production environment)
          */
         if (process.env.NODE_ENV !== "production") {
-            app.use("/", playground);
+            app.use("/", playground_1.playground);
         }
-
         /**
          * Use @colyseus/monitor
          * It is recommended to protect this route with a password
          * Read more: https://docs.colyseus.io/tools/monitor/#restrict-access-to-the-panel-using-a-password
          */
-        app.use("/colyseus", monitor());
+        app.use("/colyseus", (0, monitor_1.monitor)());
     },
-
-
     beforeListen: () => {
         /**
          * Before before gameServer.listen() is called.

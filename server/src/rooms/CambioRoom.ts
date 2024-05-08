@@ -1,7 +1,7 @@
 import { Room, Client } from "@colyseus/core";
 import { RoomSchema } from "./schema/RoomSchema.js";
 import { Player } from "./schema/Player.js";
-import { DB } from "../dataBase.js";
+
 
 
 
@@ -9,7 +9,7 @@ export class CambioRoom extends Room {
   maxClients = 2;
 
   onCreate(options: any) {
-    let db = new DB();
+   
     this.setState(new RoomSchema());
     //let entry = {"username1":options.username, ""}
     this.onMessage("ready", client => {
